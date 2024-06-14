@@ -2,7 +2,6 @@
 import { Booking } from "./booking.model";
 import { IBooking } from "./booking.interface";
 import { Facility } from "../facility/facility.model";
-import { User } from "../user/user.model";
 
 export const createBooking = async (
   bookingData: Partial<IBooking>
