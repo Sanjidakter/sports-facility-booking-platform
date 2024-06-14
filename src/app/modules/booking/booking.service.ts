@@ -12,6 +12,10 @@ export const createBooking = async (
     throw new Error("Facility not found");
   }
 
+  if (!bookingData.date || !bookingData.startTime || !bookingData.endTime) {
+    throw new Error('Date, startTime, and endTime must be provided.');
+  }
+  
   // Convert startTime and endTime to Date objects based on the provided date
   const date = new Date(bookingData.date);
   const startTime = new Date(date);

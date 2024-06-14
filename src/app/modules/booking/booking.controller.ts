@@ -32,7 +32,7 @@ export const addBooking = async (req: Request, res: Response) => {
 
 export const checkAvailabilitySlots = async (req: Request, res: Response) => {
   try {
-    const date = req.query.date || new Date().toISOString().split("T")[0];
+    const date = (req.query.date as string) || new Date().toISOString().split("T")[0];
     const availableSlots = await checkAvailability(date);
     res.status(200).json({
       success: true,

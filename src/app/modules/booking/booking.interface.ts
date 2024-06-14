@@ -4,9 +4,9 @@ import { Types } from 'mongoose';
 export interface IBooking {
   user: Types.ObjectId;
   facility: Types.ObjectId;
-  date: Date;
-  startTime: Date;
-  endTime: Date;
+  date: string;
+  startTime: string;
+  endTime: string;
   payableAmount: number;
   isBooked: 'confirmed' | 'pending' | 'canceled';
 }
