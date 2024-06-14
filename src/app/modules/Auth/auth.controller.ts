@@ -28,10 +28,13 @@ export const signUp = async (req: Request, res: Response) => {
       data: user,
     });
   } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: error.message,
-    });
+    if (error instanceof Error) {
+      res.status(500).json({ success: false, message: error.message });
+    } else {
+      res
+        .status(500)
+        .json({ success: false, message: "An unknown error occurred" });
+    }
   }
 };
 
@@ -56,10 +59,13 @@ export const login = async (req: Request, res: Response) => {
       token,
       data: user,
     });
-  } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: error.message,
-    });
+  }catch (error) {
+    if (error instanceof Error) {
+      res.status(500).json({ success: false, message: error.message });
+    } else {
+      res
+        .status(500)
+        .json({ success: false, message: "An unknown error occurred" });
+    }
   }
 };

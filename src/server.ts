@@ -13,6 +13,13 @@ const app = express();
 
 app.use(express.json());
 
+// Root route for welcome message or status check
+app.get('/', (req, res) => {
+  res.status(200).json({
+    message: 'Welcome to the Sports Facility Booking Platform API',
+  });
+});
+
 app.use('/api/auth', userRoutes);
 app.use('/api/facility', facilityRoutes);
 app.use('/api/bookings', bookingRoutes);
@@ -20,7 +27,7 @@ app.use('/api/bookings', bookingRoutes);
 app.use(notFoundHandler);
 app.use(errorHandler);
 
-mongoose.connect(config.mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(config.mongoUri)
   .then(() => {
     console.log('Connected to MongoDB');
     app.listen(PORT, () => {
